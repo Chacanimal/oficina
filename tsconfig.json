@@ -1,6 +1,10 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "strict": true
+    "jsx": "react-native",
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "noEmit": true
   }
 }
