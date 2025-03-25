@@ -1,7 +1,7 @@
 {
-  "name": "meu-projeto",
+  "name": "oficina",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "oficina/oficina/frontend/src/App.tsx",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -26,7 +26,7 @@
     "@babel/core": "^7.25.2",
     "@types/react": "~18.3.12",
     "@types/react-native": "^0.72.8",
-    "expo": "^52.0.38",
+    "expo": "^52.0.40",
     "typescript": "~4.9.5"
   },
   "private": true
