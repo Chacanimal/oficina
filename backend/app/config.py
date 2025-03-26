@@ -1,11 +1,4 @@
-import os 
-from dotenv import load_dotenv
-
-
-# ISTO CARREGA AS VARIAVEIS DE AMBIENTE DO FICHEIRO .env
-load_dotenv()
-
 class Config:
-    SQ|ALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:senha@localhost:3306/oficina_db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.getenv("SECRET_KEY")
+    SECRET_KEY = 'secret_key_example'  # Modifica com a chave secreta real

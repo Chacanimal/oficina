@@ -10,6 +10,8 @@ class User(db.Model ):
     password = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+    clients = db.relationship('Client', backref='user', lazy=True)
+    staffs = db.relationship('Staff', backref='user', lazy=True)
     
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,10 +19,11 @@ class Client(db.Model):
     morada = db.Column(db.String(150), nullable=False)
     phone = db.Column(db.String(150), nullable=False)
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    cars = db.relationship('Car', backref='client', lazy=True)
     
 class Staff(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    staff_number = db.Column(db.Intager(150), nullable=False)
+    staff_number = db.Column(db.Intager, nullable=False)
     function = db.Column(db.String(150), nullable=False)
     oficina_id = db.Column(db.Integer, db.ForeignKey('oficina.id'), nullable=False)
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -36,6 +39,7 @@ class Car(db.Model):
     brand = db.Column(db.String(150), nullable=False)
     model = db.Column(db.String(150), nullable=False)
     id_client = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
+    services = db.relationship('Service', backref='car', lazy=True)
     
 class Service(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,6 +48,7 @@ class Service(db.Model):
     date = db.Column(db.DateTime, server_default=db.func.now())
     id_oficina = db.Column(db.Integer, db.ForeignKey('oficina.id'), nullable=False)
     id_car = db.Column(db.Integer, db.ForeignKey('car.id'), nullable=False)
+    service_staffs = db.relationship('ServiceStaff', backref='service', lazy=True)
     
     
 class ServiceStaff(db.Model):
@@ -64,6 +69,7 @@ class Products(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150), nullable=False)
+    products = db.relationship('Products', backref='category', lazy=True)
     
 class Receipt(db.Model):
     id = db.Column(db.Integer, primary_key=True)
